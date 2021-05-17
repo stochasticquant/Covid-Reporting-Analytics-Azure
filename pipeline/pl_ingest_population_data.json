@@ -6,7 +6,14 @@
 			{
 				"name": "Copy Population Data",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "filecheck",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.00:05:00",
 					"retry": 0,
@@ -60,6 +67,21 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "filecheck",
+				"description": "Checks if the file for copying is available in the blob in intervals of time.",
+				"type": "Validation",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ds_population_raw_gz",
+						"type": "DatasetReference"
+					},
+					"timeout": "0.00:00:30",
+					"sleep": 10
+				}
 			}
 		],
 		"annotations": []
