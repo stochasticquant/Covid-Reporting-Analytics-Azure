@@ -108,7 +108,7 @@
 							},
 							"ifFalseActivities": [
 								{
-									"name": "Send if mail",
+									"name": "Send if mail if failure",
 									"type": "WebActivity",
 									"dependsOn": [],
 									"policy": {
